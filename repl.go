@@ -11,14 +11,26 @@ func startRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
-		fmt.Print(" > ")
+		fmt.Print("Type in a command > ")
 
 		scanner.Scan()
 		text := scanner.Text()
 
 		cleaned := cleanInput(text)
+		if len(cleaned) == 0 {
+			continue
+		}
 
-		fmt.Println("echoing: ", cleaned)
+		command := cleaned[0]
+
+		switch command{
+		case "exit":
+			// turn off the program 
+			os.Exit(0)
+		default: 
+			fmt.Println("Invalid command")
+		}
+
 	}
 
 }
