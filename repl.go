@@ -39,20 +39,20 @@ func startRepl() {
 type cliCommand struct {
 	name        string
 	description string
-	callback    func()
+	callback    func() error
 }
 
-func getCommands() map[string]cliCommand{
+func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
-			name: "help",
+			name:        "help",
 			description: "Prints the help menu",
-			callback: callbackHelp,
+			callback:    callbackHelp,
 		},
 		"exit": {
-			name: "exit",
-			description: "Purns off the Pokedex",
-			callback: callbackExit,
+			name:        "exit",
+			description: "Turns off the Pokedex",
+			callback:    callbackExit,
 		},
 	}
 }
