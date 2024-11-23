@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// Returns a struct with data from http request
 func (c *Client) ListLocationAreas() (LocationAreasResp, error) {
 	endpoint := "/location-area"
 	fullURL := baseURL + endpoint
@@ -40,4 +41,4 @@ func (c *Client) ListLocationAreas() (LocationAreasResp, error) {
 
 	return locationAreasResp, nil
 
-	}
+}

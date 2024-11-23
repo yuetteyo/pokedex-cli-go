@@ -1,9 +1,8 @@
 package pokeapi
 
-
 // Структура для декодирования json
 type LocationAreasResp struct {
-	Count    int    `json:"count"`
+	Count    int     `json:"count"`
 	Next     *string `json:"next"`
 	Previous *string `json:"previous"`
 	Results  []struct {

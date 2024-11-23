@@ -7,17 +7,15 @@ import (
 
 const baseURL = "https://pokeapi.co/api/v2"
 
-//Создаем своего клиента, так как нужен определенный timeout
+// Создаем своего клиента, так как нужен определенный timeout
 type Client struct {
-	httpClient http.Client 
+	httpClient http.Client
 }
 
 func NewClient() Client {
-	return Client {
+	return Client{
 		httpClient: http.Client{
 			Timeout: time.Minute,
 		},
 	}
 }
-
-
