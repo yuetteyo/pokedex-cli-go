@@ -12,12 +12,36 @@ func TestCreateCashe(t *testing.T) {
 func TestAddGetCashe(t *testing.T) {
 	cache := NewCache()
 
-	cache.Add("key1", []byte("val1"))
-	actual, ok := cache.Get("key1")
-	if !ok {
-		t.Errorf("key1 not found")
+	cases := []struct {
+		inputKey string
+		inputVal []byte
+	}{
+		{
+			inputKey: "key1",
+			inputVal: []byte("val1"),
+		},
+		{
+			inputKey: "key2",
+			inputVal: []byte("val2"),
+		},
+		{
+			inputKey: "",
+			inputVal: []byte("val3"),
+		},
 	}
-	if string(actual) != "val1" {
-		t.Errorf("value doesnt't match")
+
+	for _, cas := range cases {
+
+		cache.Add(cas.inputKey, cas.inputVal)
+		actual, ok := cache.Get(cas.inputKey)
+		if !ok {
+			t.Errorf("%s not found", cas.inputKey)
+			continue
+		}
+		if string(actual) != string(cas.inputVal) {
+			t.Errorf("%s doesnt't match %s",
+				string(actual),
+				cas.inputVal)
+		}
 	}
 }
