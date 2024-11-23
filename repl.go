@@ -31,7 +31,10 @@ func startRepl(cfg *config) {
 			continue
 		}
 
-		command.callback(cfg)
+		err := command.callback(cfg)
+		if err != nil {
+			fmt.Println(err)
+		}
 
 	}
 }
@@ -44,15 +47,20 @@ type cliCommand struct {
 
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
+		"help": {
+			name:        "help",
+			description: "Prints the help menu",
+			callback:    callbackHelp,
+		},
 		"map": {
 			name:        "map",
 			description: "Lists some location areas",
 			callback:    callbackMap,
 		},
-		"help": {
-			name:        "help",
-			description: "Prints the help menu",
-			callback:    callbackHelp,
+		"mapb": {
+			name:        "mapb",
+			description: "Lists previous location areas",
+			callback:    callbackMapb,
 		},
 		"exit": {
 			name:        "exit",
