@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"log"
 	// "github.com/yuetteyo/pokedex-cli-go/internal/pokeapi"
 )
 
@@ -11,7 +10,7 @@ func callbackMap(cfg *config) error {
 
 	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.nextLocationAreaURL)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	fmt.Println("Location areas:")
@@ -31,7 +30,7 @@ func callbackMapb(cfg *config) error {
 
 	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.prevLocationAreaURL)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	fmt.Println("Location areas:")

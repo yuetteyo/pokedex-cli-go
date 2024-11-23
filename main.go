@@ -2,9 +2,8 @@ package main
 
 import "github.com/yuetteyo/pokedex-cli-go/internal/pokeapi"
 
-
 type config struct {
-	pokeapiClient pokeapi.Client
+	pokeapiClient       pokeapi.Client
 	nextLocationAreaURL *string
 	prevLocationAreaURL *string
 }
