@@ -1,17 +1,20 @@
 package main
 
-import "github.com/yuetteyo/pokedex-cli-go/internal/pokeapi"
+import (
+	"time"
 
+	"github.com/yuetteyo/pokedex-cli-go/internal/pokeapi"
+)
 
 type config struct {
-	pokeapiClient pokeapi.Client
+	pokeapiClient       pokeapi.Client
 	nextLocationAreaURL *string
 	prevLocationAreaURL *string
 }
 
 func main() {
 	cfg := config{
-		pokeapiClient: pokeapi.NewClient(),
+		pokeapiClient: pokeapi.NewClient(time.Hour),
 	}
 	startRepl(&cfg)
 }
