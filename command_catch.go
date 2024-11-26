@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"math/rand"
-
 )
 
 func callbackCatch(cfg *config, args ...string) error {
@@ -26,6 +25,7 @@ func callbackCatch(cfg *config, args ...string) error {
 		return fmt.Errorf("failed to catch %s", pokemonName)
 	}
 
+	cfg.caughtPokemon[pokemonName] = pokemon
 	fmt.Printf("Pokemon %s was caught!\n", pokemonName)
 
 	return nil

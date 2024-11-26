@@ -110,4 +110,3 @@ func (c *Client) GetLocationArea(locationName string) (LocationArea, error) {
 	return locationArea, nil
 
 }
-
